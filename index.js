@@ -15,7 +15,7 @@ axios
     `/https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}`
   )
   .then((response) => {
-    console.log(response.data); // Affichera la réponse du serveur
+    // console.log(response.data); // Affichera la réponse du serveur
   })
   .catch((error) => {
     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
@@ -26,7 +26,7 @@ axios
     `https://lereacteur-marvel-api.herokuapp.com/comics/5fc8ba1fdc33470f788f88b3?apiKey=${process.env.API_KEY}`
   )
   .then((response) => {
-    console.log(response.data); // Affichera la réponse du serveur
+    // console.log(response.data); // Affichera la réponse du serveur
   })
   .catch((error) => {
     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
@@ -36,7 +36,7 @@ axios
     `/ https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}`
   )
   .then((response) => {
-    console.log(response.data); // Affichera la réponse du serveur
+    // console.log(response.data); // Affichera la réponse du serveur
   })
   .catch((error) => {
     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
@@ -46,7 +46,7 @@ axios
     `https://lereacteur-marvel-api.herokuapp.com/character/5fcf91f4d8a2480017b91453?apiKey=${process.env.API_KEY}`
   )
   .then((response) => {
-    console.log(response.data); // Affichera la réponse du serveur
+    // console.log(response.data); // Affichera la réponse du serveur
   })
   .catch((error) => {
     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
