@@ -22,7 +22,8 @@ app.get("/comics", (req, res) => {
         `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}`
       )
       .then((response) => {
-        const comics = response.data.results;
+        const comics = response.data;
+        console.log(response.data);
 
         res.json(comics);
       });
@@ -38,7 +39,7 @@ app.get("/characters", (req, res) => {
         `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}`
       )
       .then((response) => {
-        const characters = response.data.results;
+        const characters = response.data;
 
         res.json(characters);
       });
