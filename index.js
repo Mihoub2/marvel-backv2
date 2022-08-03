@@ -14,21 +14,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome on Mihoub's API" });
 });
-app.get("/comics", (req, res) => {
-  try {
-    axios
-      .get(
-        `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}`
-      )
-      .then((response) => {
-        const comics = response.data.results;
-
-        res.json(comics);
-      });
-  } catch (error) {
-    console.log(error.message);
-  }
-});
 
 app.get("/comics", (req, res) => {
   try {
