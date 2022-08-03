@@ -27,6 +27,36 @@ app.get("/comics", (req, res) => {
     console.log(error.message);
   }
 });
+
+app.get("/characters", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        const characters = response.data.results;
+
+        res.json(characters);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+// app.get("/comics/Id", (req, res) => {
+//   try {
+//     axios
+//       .get(
+//         `https://lereacteur-marvel-api.herokuapp.com/comics/5fc8ba1fdc33470f788f88b3?apiKey=${process.env.API_KEY}`
+//       )
+//       .then((response) => {
+//         const comicsById = response.data;
+//         res.json(comicsById);
+//       });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// });
 // app.get("/comics/characterId", (req, res) => {
 //   try {
 //     axios
@@ -34,38 +64,9 @@ app.get("/comics", (req, res) => {
 //         `https://lereacteur-marvel-api.herokuapp.com/character/5fcf91f4d8a2480017b91453?apiKey=${process.env.API_KEY}`
 //       )
 //       .then((response) => {
-//         const charactersById = response.data.comics;
+//         const charactersById = response.data.result;
 
 //         res.json(charactersById);
-//       });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
-// app.get("/characters", (req, res) => {
-//   try {
-//     axios
-//       .get(
-//         `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=Y${process.env.API_KEY}`
-//       )
-//       .then((response) => {
-//         const characters = response.data.results;
-
-//         res.json(characters);
-//       });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
-// app.get("/comicsByID", (req, res) => {
-//   try {
-//     axios
-//       .get(
-//         `https://lereacteur-marvel-api.herokuapp.com/comics/5fc8ba1fdc33470f788f88b3?apiKey=${process.env.API_KEY}`
-//       )
-//       .then((response) => {
-//         const comicsById = response.data.results;
-//         res.json(comicsById);
 //       });
 //   } catch (error) {
 //     console.log(error.message);
