@@ -12,8 +12,7 @@ app.use(express.json());
 
 // mongoose.connect(process.env.MONGODB_URI);
 app.get("/", (req, res) => {
-  //   console.log("route /");
-  res.status(200).json({ message: "route /" });
+  res.status(200).json({ message: "Welcome on Mihoub's API" });
 });
 app.get("/comics", (req, res) => {
   try {
