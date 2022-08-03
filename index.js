@@ -10,7 +10,7 @@ app.use(express.json());
 
 // oegULH9U0a5v1IgF
 
-mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI);
 
 app.get("/comics", (req, res) => {
   try {
@@ -73,8 +73,8 @@ app.get("/characters", (req, res) => {
 //   }
 // });
 
-const userRoutes = require("./routes/user");
-app.use(userRoutes);
+// const userRoutes = require("./routes/user");
+// app.use(userRoutes);
 
 app.all("*", (req, res) => {
   console.log("route not found");
