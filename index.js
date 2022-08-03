@@ -11,8 +11,27 @@ app.use(express.json());
 // oegULH9U0a5v1IgF
 
 // mongoose.connect(process.env.MONGODB_URI);
-
 app.get("/", (req, res) => {
+  console.log("route /");
+  res.status(200).json({ message: "route /" });
+});
+app.get("/comics", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        const comics = response.data.results;
+
+        res.json(comics);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/comics", (req, res) => {
   try {
     axios
       .get(
