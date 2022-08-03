@@ -12,7 +12,7 @@ app.use(express.json());
 
 // mongoose.connect(process.env.MONGODB_URI);
 
-app.get("/comics", (req, res) => {
+app.get("/", (req, res) => {
   try {
     axios
       .get(
