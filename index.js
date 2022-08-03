@@ -47,35 +47,32 @@ app.get("/characters", (req, res) => {
     console.log(error.message);
   }
 });
-// app.get("/comics/Id", (req, res) => {
-//   try {
-//     axios
-//       .get(
-//         `https://lereacteur-marvel-api.herokuapp.com/comics/5fc8ba1fdc33470f788f88b3?apiKey=${process.env.API_KEY}`
-//       )
-//       .then((response) => {
-//         const comicsById = response.data;
-//         res.json(comicsById);
-//       });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
-// app.get("/comics/characterId", (req, res) => {
-//   try {
-//     axios
-//       .get(
-//         `https://lereacteur-marvel-api.herokuapp.com/character/5fcf91f4d8a2480017b91453?apiKey=${process.env.API_KEY}`
-//       )
-//       .then((response) => {
-//         const charactersById = response.data.result;
-
-//         res.json(charactersById);
-//       });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
+app.get("/comics/:characterId", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/comics/${req.params.characterId}?apiKey=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        res.json(response.data);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+app.get("/character/:characterId", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/character/${req.params.characterId}?apiKey=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        res.json(response.data);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 // const userRoutes = require("./routes/user");
 // app.use(userRoutes);
