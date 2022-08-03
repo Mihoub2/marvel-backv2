@@ -8,49 +8,69 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// oegULH9U0a5v1IgF
+
 mongoose.connect(process.env.MONGODB_URI);
 
-// axios
-//   .get(
-//     `/https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}`
-//   )
-//   .then((response) => {
-//     console.log(response.data); // Affichera la réponse du serveur
-//   })
-//   .catch((error) => {
-//     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
-//   });
+app.get("/comics", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        const comics = response.data.results;
 
-// axios
-//   .get(
-//     `https://lereacteur-marvel-api.herokuapp.com/comics/5fc8ba1fdc33470f788f88b3?apiKey=${process.env.API_KEY}`
-//   )
-//   .then((response) => {
-//     console.log(response.data); // Affichera la réponse du serveur
-//   })
-//   .catch((error) => {
-//     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
-//   });
-// axios
-//   .get(
-//     `/ https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}`
-//   )
-//   .then((response) => {
-//     console.log(response.data); // Affichera la réponse du serveur
-//   })
-//   .catch((error) => {
-//     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
-//   });
-// axios
-//   .get(
-//     `https://lereacteur-marvel-api.herokuapp.com/character/5fcf91f4d8a2480017b91453?apiKey=${process.env.API_KEY}`
-//   )
-//   .then((response) => {
-//     console.log(response.data); // Affichera la réponse du serveur
-//   })
-//   .catch((error) => {
-//     console.log(error); // Affichera d'éventuelles erreurs, notamment en cas de problème de connexion Internet.
-//   });
+        res.json(comics);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+app.get("/comics/characterId", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/character/5fcf91f4d8a2480017b91453?apiKey=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        const charactersById = response.data.comics;
+
+        res.json(charactersById);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+app.get("/characters", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=Y${process.env.API_KEY}`
+      )
+      .then((response) => {
+        const characters = response.data.results;
+
+        res.json(characters);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+app.get("/comicsByID", (req, res) => {
+  try {
+    axios
+      .get(
+        `https://lereacteur-marvel-api.herokuapp.com/comics/5fc8ba1fdc33470f788f88b3?apiKey=${process.env.API_KEY}`
+      )
+      .then((response) => {
+        const comicsById = response.data.results;
+        res.json(comicsById);
+      });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 const userRoutes = require("./routes/user");
 app.use(userRoutes);
