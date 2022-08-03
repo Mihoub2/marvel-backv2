@@ -12,7 +12,7 @@ app.use(express.json());
 
 // mongoose.connect(process.env.MONGODB_URI);
 app.get("/", (req, res) => {
-  console.log("route /");
+  //   console.log("route /");
   res.status(200).json({ message: "route /" });
 });
 app.get("/comics", (req, res) => {
