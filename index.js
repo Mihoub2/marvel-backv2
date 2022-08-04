@@ -36,7 +36,7 @@ app.get("/characters", (req, res) => {
   try {
     axios
       .get(
-        `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}name=${input}`
+        `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}`
       )
       .then((response) => {
         const characters = response.data;
