@@ -14,7 +14,7 @@ app.use(express.json());
 //   ${process.env.LINKMONGO}`
 // );
 mongoose.connect(
-  "mongodb://Veri:sLXDj7p2HdgFGRuh@cluster0.qjbp7uc.mongodb.net/test"
+  "mongodb+srv://Veri:sLXDj7p2HdgFGRuh@cluster0.qjbp7uc.mongodb.net/test"
 );
 
 app.get("/", (req, res) => {
