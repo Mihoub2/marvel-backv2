@@ -8,11 +8,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(
-  `mongodb://${process.env.userMongo}
-  :${process.env.passwordMongo}@
-  ${process.env.linkMongo}`
-);
+// mongoose.connect(
+//   `mongodb://${process.env.userMongo}
+//   :${process.env.passwordMongo}@
+//   ${process.env.linkMongo}`
+// );
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome on Mihoub's API" });
@@ -81,8 +81,8 @@ app.get("/character/:characterId", (req, res) => {
   }
 });
 
-const userRoutes = require("./routes/user");
-app.use(userRoutes);
+// const userRoutes = require("./routes/user");
+// app.use(userRoutes);
 
 app.all("*", (req, res) => {
   console.log("route not found");
