@@ -41,4 +41,28 @@ router.post("/user/signup", async (req, res) => {
   }
 });
 
+router.post("/user/login", async (req, res) => {
+  try {
+    const userToCheck = await User.findOne({ email: req.body.email });
+    if (userToCheck === null) {
+      res.status(401).json({ message: "Unauthorized 1" });
+    } else {
+      const newHash = SHA256(req.body.password + userToCheck.salt).toString(
+        encBase64
+      );
+
+      if (newHash === userToCheck.hash) {
+        res.json({
+          _id: userToCheck._id,
+          token: userToCheck.token,
+        });
+      } else {
+        res.status(401).json({ message: "Unauthorized 2" });
+      }
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 module.exports = router;
