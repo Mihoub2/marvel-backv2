@@ -8,11 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// mongoose.connect(
-//   `mongodb://${process.env.USERMONGO}
-//   :${process.env.PASSWORDMONGO}@
-//   ${process.env.LINKMONGO}`
-// );
 mongoose.connect(
   "mongodb+srv://Veri:sLXDj7p2HdgFGRuh@cluster0.qjbp7uc.mongodb.net/test"
 );
