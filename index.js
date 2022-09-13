@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
-  "mongodb+srv://Veri:sLXDj7p2HdgFGRuh@cluster0.qjbp7uc.mongodb.net/test"
+  "mongodb+srv://Veri:4QmGM9YeaDNxPAC7@cluster0.qjbp7uc.mongodb.net/test"
 );
 
 app.get("/", (req, res) => {
