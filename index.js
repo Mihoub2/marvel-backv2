@@ -80,6 +80,6 @@ app.all("*", (req, res) => {
   res.status(404).json({ message: "route not found" });
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT, () => {
   console.log("Go!");
 });
