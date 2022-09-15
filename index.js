@@ -8,9 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(
-  "mongodb+srv://Veri:4QmGM9YeaDNxPAC7@cluster0.qjbp7uc.mongodb.net/test"
-);
+mongoose.connect(process.env.LINKMONGO);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome on Mihoub's API" });
@@ -52,30 +50,25 @@ app.get("/characters", (req, res) => {
     console.log(error.message);
   }
 });
-app.get("/comics/:characterId", (req, res) => {
+app.get("/characters/:id", async (req, res) => {
   try {
-    axios
-      .get(
-        `https://lereacteur-marvel-api.herokuapp.com/comics/${req.params.characterId}?apiKey=${process.env.API_KEY}`
-      )
-      .then((response) => {
-        res.json(response.data);
-      });
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/character/${req.params.id}?apiKey=${apiKey}`
+    );
+    res.json(response.data);
   } catch (error) {
-    console.log(error.message);
+    res.json(error.message);
   }
 });
-app.get("/character/:characterId", (req, res) => {
+
+app.get("/comics/:id", async (req, res) => {
   try {
-    axios
-      .get(
-        `https://lereacteur-marvel-api.herokuapp.com/character/${req.params.characterId}?apiKey=${process.env.API_KEY}`
-      )
-      .then((response) => {
-        res.json(response.data);
-      });
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/comics/${req.params.id}?apiKey=${apiKey}`
+    );
+    res.json(response.data);
   } catch (error) {
-    console.log(error.message);
+    res.json(error.message);
   }
 });
 
@@ -87,6 +80,6 @@ app.all("*", (req, res) => {
   res.status(404).json({ message: "route not found" });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log("server ON!");
+app.listen(3001, () => {
+  console.log("Go!");
 });
